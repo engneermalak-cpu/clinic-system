@@ -1,0 +1,64 @@
+/* CSS for Mobile Tooltips - v2 with transitions */
+
+/* Style for the tooltip itself */
+.mobile-tooltip-custom {
+    position: absolute; /* Positioned by JavaScript */
+    background-color: rgba(51, 51, 51, 0.95); /* Dark background, slightly transparent */
+    color: #fff; /* White text */
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px; /* Slightly smaller font for tooltips */
+    line-height: 1.4;
+    z-index: 10000; /* Ensure it's on top of other elements */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 220px; /* Prevent very wide tooltips */
+    opacity: 0; /* Initially hidden for fade-in effect */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade-in/out */
+    pointer-events: none; /* Tooltip itself should not be interactive */
+}
+
+/* Style for when the tooltip is made visible by JavaScript */
+.mobile-tooltip-custom.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*
+   The JavaScript (mobile_tooltips_v2.js) now uses isTouchDevice() to determine
+   if these click-based tooltips should be active.
+   Therefore, the media query below is less critical for *activating* the styles,
+   as the JS handles the activation logic. However, it can still be useful for
+   any style adjustments that are *only* desired on smaller viewports,
+   even if the device is touch-capable (e.g., a large touch-screen monitor).
+   For now, the primary control is via JS detecting touch capability.
+*/
+
+/*
+   If you still want to restrict these tooltip styles to certain screen sizes
+   in addition to touch detection, you can use a media query.
+   However, since the JS now activates based on touch, this CSS will apply
+   whenever the .mobile-tooltip-custom class is added by the JS on a touch device.
+
+   Example of a media query if you wanted to further refine styles for very small screens:
+   @media (max-width: 480px) {
+       .mobile-tooltip-custom {
+           font-size: 12px;
+           padding: 6px 10px;
+       }
+   }
+*/
+
+/*
+   Regarding default browser tooltips (title attribute):
+   The JS solution uses aria-label. If `title` attributes are still present
+   and causing overlapping default tooltips on desktop (non-touch) where
+   our custom tooltips are disabled, that's standard browser behavior.
+   On touch devices where our script is active, the click interaction for our
+   custom tooltip should generally take precedence or not conflict significantly.
+   If conflicts arise, specific handling for `title` attributes might be needed,
+   but it's often best to rely on `aria-label` for custom tooltips and ensure
+   `title` attributes are used appropriately for their default purpose if needed.
+*/
+
