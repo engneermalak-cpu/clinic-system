@@ -1,0 +1,51 @@
+
+.chat-conversation .right .conversation-list .ctext-wrap-content {
+    background-color: rgb(163 208 119 / 75%);
+}
+.chat-conversation .right .conversation-list .ctext-wrap .ctext-wrap-content:before {
+    border-top-color: rgb(163 208 119 / 75%);
+    border-right-color: rgb(163 208 119 / 75%);
+}
+
+#file-preview {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#file-thumbnail img {
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+#file-name {
+    display: inline-block;
+    max-width: calc(100% - 70px); /* حساب المساحة المتبقية مع الزر */
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#file-preview button {
+    flex-shrink: 0;
+}
+
+    #voice-preview {
+    display: none;
+    margin-top: 10px;
+}
+
+#cancel-record {
+    display: none;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#record-timer {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #333;
+}
